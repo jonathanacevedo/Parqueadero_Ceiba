@@ -38,8 +38,10 @@ pipeline {
         }
         stage('Unit Tests') {
             steps{
-            echo "------------>Integration Tests<------------"
                 echo "------------>Unit Tests<------------"
+                sh 'gradle --b ./infraestructura/build.gradle test'
+                sh 'gradle --b ./aplicacion/build.gradle test'
+                sh 'gradle --b ./dominio/build.gradle test'
             }
         }
         stage('Integration Tests') {
