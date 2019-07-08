@@ -1,0 +1,5 @@
+rootProject.name = 'cinema'
+
+include ':aplicacion', 
+		':dominio', 
+		':infraestructura'
