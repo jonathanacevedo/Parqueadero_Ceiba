@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ManejadorParqueo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">aplicacion</a> &gt; <a href="index.source.html" class="el_package">com.ceiba.comando.manejador</a> &gt; <span class="el_source">ManejadorParqueo.java</span></div><h1>ManejadorParqueo.java</h1><pre class="source lang-java linenums">package com.ceiba.comando.manejador;
+
+import java.util.Date;
+
+import org.springframework.stereotype.Component;
+
+import com.ceiba.fachadainterface.ParqueoFachadaInterface;
+import com.ceiba.modelo.Carro;
+import com.ceiba.modelo.Moto;
+import com.ceiba.modelo.Parqueo;
+import com.ceiba.modelo.Vehiculo;
+
+@Component
+public class ManejadorParqueo {
+
+	private ParqueoFachadaInterface parqueoRepositorio;
+	private static final int PRECIO_HORA_MOTO = 500;
+	private static final int PRECIO_HORA_CARRO = 1000;
+	private static final int PRECIO_DIA_MOTO = 4000;
+	private static final int PRECIO_DIA_CARRO = 8000;
+
+	public ManejadorParqueo(ParqueoFachadaInterface daoParqueo) {
+<span class="nc" id="L23">		super();</span>
+<span class="nc" id="L24">		this.parqueoRepositorio = daoParqueo;</span>
+<span class="nc" id="L25">	}</span>
+	
+	public Parqueo obtenerParqueo(String placa) {
+<span class="nc" id="L28">		return this.parqueoRepositorio.obtenerParqueo(placa);</span>
+	}
+	
+	public void registrarParqueo(Vehiculo vehiculo) {
+
+<span class="nc" id="L33">		Parqueo parqueo = new Parqueo(vehiculo, new Date(), null, 0);		</span>
+<span class="nc" id="L34">		this.parqueoRepositorio.registrarParqueo(parqueo);</span>
+<span class="nc" id="L35">	}</span>
+	
+	public void retirarParqueo(Parqueo parqueo) {
+		
+<span class="nc" id="L39">		this.parqueoRepositorio.retirarParqueo(parqueo);</span>
+<span class="nc" id="L40">	}</span>
+	
+	public boolean consultarVehiculo(String placa) {
+<span class="nc" id="L43">		return this.parqueoRepositorio.consultarVehiculo(placa);</span>
+	}
+	
+	public boolean consultarSalidaVehiculo(String placa) {
+<span class="nc" id="L47">		return this.parqueoRepositorio.consultarSalidaVehiculo(placa);</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

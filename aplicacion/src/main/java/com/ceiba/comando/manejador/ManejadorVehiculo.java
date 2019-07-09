@@ -13,7 +13,7 @@ public class ManejadorVehiculo {
 	
 	private VehiculoFachadaInterface vehiculoRepositorio;
 	
-	private static final String NO_AUTORIZADO_A_INGRESAR = "No está autorizado a ingresar";
+	private static final String NO_AUTORIZADO_A_INGRESAR = "No esta autorizado a ingresar";
 	
 	public ManejadorVehiculo(VehiculoFachadaInterface vehiculoRepositorio) {
 		this.vehiculoRepositorio = vehiculoRepositorio;

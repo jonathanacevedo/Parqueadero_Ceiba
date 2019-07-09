@@ -1,8 +1,5 @@
 package com.ceiba.api;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,11 +52,11 @@ public class ParqueaderoController {
 	public void sacarVehiculo(@PathVariable String placaVehiculo) {
 		
 		if(!this.manejadorParqueo.consultarVehiculo(placaVehiculo)) {
-			throw new IllegalArgumentException("El vehiculo no está parqueado");
+			throw new IllegalArgumentException("El vehiculo no esta parqueado");
 		}
 		
 		if(this.manejadorParqueo.consultarSalidaVehiculo(placaVehiculo)) {
-			throw new IllegalArgumentException("El vehiculo ya salió del parqueadero");
+			throw new IllegalArgumentException("El vehiculo ya salio del parqueadero");
 		}
 						
 		Parqueo parqueo;

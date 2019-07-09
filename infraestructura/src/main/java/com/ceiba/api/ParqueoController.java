@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ceiba.comando.manejador.ManejadorParqueo;
 import com.ceiba.modelo.Parqueo;
 
+/*
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(value = "/vehiculo",
@@ -34,3 +35,4 @@ public class ParqueoController {
 	
 
 }
+*/
