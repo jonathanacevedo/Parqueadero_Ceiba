@@ -23,7 +23,7 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
 
     private static final String RECURSO_NO_ENCONTRADO = "El recurso consultado no ha sido encontrado.";
     
-    private static final String NO_AUTORIZADO_A_INGRESAR = "No está autorizado a ingresar";
+    private static final String NO_AUTORIZADO_A_INGRESAR = "No esta autorizado a ingresar";
     
     private static final ConcurrentHashMap<String, Integer> CODIGOS_ESTADO = new ConcurrentHashMap<>();
 

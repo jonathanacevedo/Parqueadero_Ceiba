@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ceiba.comando.manejador.ManejadorVehiculoTest;
 import com.ceiba.modelo.Carro;
 import com.ceiba.modelo.Moto;
 import com.ceiba.modelo.Vehiculo;
