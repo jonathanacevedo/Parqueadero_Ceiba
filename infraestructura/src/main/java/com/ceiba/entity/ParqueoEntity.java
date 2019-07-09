@@ -21,8 +21,8 @@ public class ParqueoEntity {
 	@JoinColumn(name = "placa", referencedColumnName = "placa")
 	private VehiculoEntity vehiculo;
 	
-	private Date fechaInicio;
-	private Date fechaFin;
+	private Date fechaIngreso;
+	private Date fechaSalida;
 	private double valor;
 	public Long getId() {
 		return id;
@@ -36,17 +36,17 @@ public class ParqueoEntity {
 	public void setVehiculo(VehiculoEntity vehiculo) {
 		this.vehiculo = vehiculo;
 	}
-	public Date getFechaInicio() {
-		return fechaInicio;
+	public Date getFechaIngreso() {
+		return fechaIngreso;
 	}
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
+	public void setFechaIngreso(Date fechaInicio) {
+		this.fechaIngreso = fechaInicio;
 	}
-	public Date getFechaFin() {
-		return fechaFin;
+	public Date getFechaSalida() {
+		return fechaSalida;
 	}
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
+	public void setFechaSalida(Date fechaFin) {
+		this.fechaSalida = fechaFin;
 	}
 	public double getValor() {
 		return valor;

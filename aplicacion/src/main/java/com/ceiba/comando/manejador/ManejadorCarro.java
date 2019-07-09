@@ -2,15 +2,15 @@ package com.ceiba.comando.manejador;
 
 import org.springframework.stereotype.Component;
 
+import com.ceiba.fachadainterface.CarroFachadaInterface;
 import com.ceiba.modelo.Carro;
-import com.ceiba.repositorio.CarroRepositorio;
 
 @Component
 public class ManejadorCarro {
 	
-	CarroRepositorio carrorepo;
+	CarroFachadaInterface carrorepo;
 
-	public ManejadorCarro(CarroRepositorio carrorepo) {
+	public ManejadorCarro(CarroFachadaInterface carrorepo) {
 		this.carrorepo = carrorepo;
 	}
 	

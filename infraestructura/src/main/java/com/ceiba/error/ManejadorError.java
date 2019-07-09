@@ -19,8 +19,12 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
     
     private static final Logger LOGGER_ERROR = LoggerFactory.getLogger(ManejadorError.class);
 
-    private static final String OCURRIO_UN_ERROR_FAVOR_CONTACTAR_AL_ADMINISTRADOR = "Ocurri√≥ un error favor contactar al administrador.";
+    private static final String OCURRIO_UN_ERROR_FAVOR_CONTACTAR_AL_ADMINISTRADOR = "Ocurrio un error favor contactar al administrador.";
 
+    private static final String RECURSO_NO_ENCONTRADO = "El recurso consultado no ha sido encontrado.";
+    
+    private static final String NO_AUTORIZADO_A_INGRESAR = "No est· autorizado a ingresar";
+    
     private static final ConcurrentHashMap<String, Integer> CODIGOS_ESTADO = new ConcurrentHashMap<>();
 
     public ManejadorError() {
@@ -44,6 +48,46 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
             LOGGER_ERROR.error(excepcionNombre, exception);
             Error error = new Error(excepcionNombre, OCURRIO_UN_ERROR_FAVOR_CONTACTAR_AL_ADMINISTRADOR);
             resultado = new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return resultado;
+    }
+    
+    @ExceptionHandler(IllegalArgumentException.class)
+    public final ResponseEntity<Error> handleNotFoundException(IllegalArgumentException exception) {
+        ResponseEntity<Error> resultado;
+
+        String excepcionNombre = exception.getClass().getSimpleName();
+        String mensaje = exception.getMessage();
+        Integer codigo = CODIGOS_ESTADO.get(excepcionNombre);
+
+        if (codigo != null) {
+            Error error = new Error(excepcionNombre, mensaje);
+            resultado = new ResponseEntity<>(error, HttpStatus.valueOf(codigo));
+        } else {
+            LOGGER_ERROR.error(excepcionNombre, exception);
+            Error error = new Error(excepcionNombre, RECURSO_NO_ENCONTRADO);
+            resultado = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        }
+
+        return resultado;
+    }
+    
+    @ExceptionHandler(IllegalStateException.class)
+    public final ResponseEntity<Error> handleNotFoundException(IllegalStateException exception) {
+        ResponseEntity<Error> resultado;
+
+        String excepcionNombre = exception.getClass().getSimpleName();
+        String mensaje = exception.getMessage();
+        Integer codigo = CODIGOS_ESTADO.get(excepcionNombre);
+
+        if (codigo != null) {
+            Error error = new Error(excepcionNombre, mensaje);
+            resultado = new ResponseEntity<>(error, HttpStatus.valueOf(codigo));
+        } else {
+            LOGGER_ERROR.error(excepcionNombre, exception);
+            Error error = new Error(excepcionNombre, NO_AUTORIZADO_A_INGRESAR);
+            resultado = new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
         }
 
         return resultado;
