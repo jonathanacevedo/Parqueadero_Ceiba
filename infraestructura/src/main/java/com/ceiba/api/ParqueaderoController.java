@@ -44,7 +44,7 @@ public class ParqueaderoController {
 			vehiculo = new Carro(vehiculoData.getPlaca(), vehiculoData.getTipo());
 		}
 	
-		this.manejadorVehiculo.ingresarVehiculo(vehiculo);		
+		this.manejadorVehiculo.ingresarVehiculo(vehiculo);
 		this.manejadorParqueo.registrarParqueo(vehiculo);
 	}
 	
