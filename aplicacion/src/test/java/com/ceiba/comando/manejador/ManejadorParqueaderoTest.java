@@ -259,7 +259,7 @@ public class ManejadorParqueaderoTest {
 		Vehiculo carro = new VehiculoTestDataBuilder()
 						.conPlaca("BGQ81B")
 						.buildCarro();
-	
+					
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());
 		calendar.add(Calendar.HOUR_OF_DAY,  -27);
