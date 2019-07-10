@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.ceiba.comando.databuilder.VehiculoTestDataBuilder;
 import com.ceiba.fachadainterface.ParqueoFachadaInterface;
 import com.ceiba.fachadainterface.VehiculoFachadaInterface;
+import com.ceiba.modelo.Carro;
 import com.ceiba.modelo.Vehiculo;
 
 @RunWith(SpringRunner.class)
@@ -27,9 +27,7 @@ public class ManejadorVehiculoTest {
 	@Test
 	public void InsertarVehiculo() {
 		ManejadorParqueadero manejadorVehiculo = new ManejadorParqueadero(vehiculoRepositorio, parqueoRepositorio);
-		Vehiculo vehiculo = new VehiculoTestDataBuilder()
-							.conPlaca(PLACA_EJEMPLO)
-							.buildCarro();
+		Vehiculo vehiculo = new Carro(PLACA_EJEMPLO, "Carro");
 		
 		manejadorVehiculo.ingresarVehiculo(vehiculo);
 		Vehiculo vehiculoReturn = this.vehiculoRepositorio.buscarVehiculo(vehiculo);
