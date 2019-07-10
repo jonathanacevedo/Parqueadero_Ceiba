@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.ceiba.comando.testdatabuilder.VehiculoTestDataBuilder;
+import com.ceiba.fachadainterface.ParqueoFachadaInterface;
 import com.ceiba.fachadainterface.VehiculoFachadaInterface;
 import com.ceiba.modelo.Vehiculo;
 
@@ -16,16 +18,23 @@ public class ManejadorVehiculoTest {
 
 	@Autowired
 	VehiculoFachadaInterface vehiculoRepositorio;
+	
+	@Autowired
+	ParqueoFachadaInterface parqueoRepositorio;
 
+	private static final String PLACA_EJEMPLO = "TPL782";
 
 	@Test
-	public void integracion() {
-		ManejadorVehiculo manejadorVehiculo = new ManejadorVehiculo(vehiculoRepositorio);
-		Vehiculo vehiculo = new Vehiculo("EA", "CARRO");
+	public void InsertarVehiculo() {
+		ManejadorParqueadero manejadorVehiculo = new ManejadorParqueadero(vehiculoRepositorio, parqueoRepositorio);
+		Vehiculo vehiculo = new VehiculoTestDataBuilder()
+							.conPlaca(PLACA_EJEMPLO)
+							.buildCarro();
+		
 		manejadorVehiculo.ingresarVehiculo(vehiculo);
-		Vehiculo vehiculoReturn = this.vehiculoRepositorio.buscar(vehiculo);
+		Vehiculo vehiculoReturn = this.vehiculoRepositorio.buscarVehiculo(vehiculo);
 
-		Assert.assertEquals("EA", vehiculoReturn.getPlaca());
+		Assert.assertEquals(PLACA_EJEMPLO, vehiculoReturn.getPlaca());
 
 	}
 }

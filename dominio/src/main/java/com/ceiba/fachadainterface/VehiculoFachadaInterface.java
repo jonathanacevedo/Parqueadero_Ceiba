@@ -6,5 +6,5 @@ public interface VehiculoFachadaInterface {
 
 	public void ingresarVehiculo(Vehiculo vehiculo);
 	
-	public Vehiculo buscar(Vehiculo vehiculo);
+	public Vehiculo buscarVehiculo(Vehiculo vehiculo);
 }
