@@ -131,9 +131,7 @@ public class ManejadorParqueadero {
 	public int ObtenerNumeroDeHoras(Date fechaIngreso) {
 		long periodo = new Date().getTime() - fechaIngreso.getTime();
 		double horasDiferencia = (periodo / (60 * 60 * 1000));
-		
-		System.out.println("Horas de diferencia : "+horasDiferencia);
-		
+				
 		if(horasDiferencia == 0.0){
 			horasDiferencia = 1;
 		}

@@ -35,6 +35,5 @@ public class ManejadorVehiculoTest {
 		Vehiculo vehiculoReturn = this.vehiculoRepositorio.buscarVehiculo(vehiculo);
 
 		Assert.assertEquals(PLACA_EJEMPLO, vehiculoReturn.getPlaca());
-
 	}
 }
