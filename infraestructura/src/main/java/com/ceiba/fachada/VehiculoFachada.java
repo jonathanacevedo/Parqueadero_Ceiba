@@ -27,9 +27,16 @@ public class VehiculoFachada implements VehiculoFachadaInterface {
 
 	@Override
 	public Vehiculo buscarVehiculo(Vehiculo vehiculo) {
+		
+		Vehiculo vehiculoModelo = null;
+		
 		Optional<VehiculoEntity> vehiculoEntity = this.vehiculoRepositorio.findById(vehiculo.getPlaca());
-		vehiculoEntity.isPresent();
-		return BuilderVehiculo.convertirAModelo(vehiculoEntity.get());
+		boolean isPresent = vehiculoEntity.isPresent();
+		
+		if(isPresent) {
+			vehiculoModelo = BuilderVehiculo.convertirAModelo(vehiculoEntity.get());
+		}
+		return vehiculoModelo;
 	}
 
 }

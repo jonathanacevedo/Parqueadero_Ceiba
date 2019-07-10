@@ -39,7 +39,7 @@ public class ParqueaderoController {
 		} else {
 			vehiculo = new Carro(vehiculoData.getPlaca(), vehiculoData.getTipo());
 		}
-	
+			
 		this.manejadorParqueadero.ingresarVehiculo(vehiculo);
 		
 	}

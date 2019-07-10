@@ -42,6 +42,15 @@ pipeline {
                          url:'https://github.com/jonathanacevedo/Parqueadero_Ceiba']]])
             }  
         }
+        
+        stage('Build') {
+            steps {
+                echo "------------>Build<------------"
+                sh 'gradle --b ./infraestructura/build.gradle build -x test'
+                sh 'gradle --b ./aplicacion/build.gradle build -x test'
+                sh 'gradle --b ./dominio/build.gradle build -x test'
+            } 
+        }
         stage('Unit Tests') {
             steps{
                 echo "------------>Unit Tests<------------"
@@ -53,6 +62,9 @@ pipeline {
         stage('Integration Tests') {
             steps {
                 echo "------------>Integration Tests<------------"
+                sh 'gradle --b ./infraestructura/build.gradle test'
+                sh 'gradle --b ./aplicacion/build.gradle test'
+                sh 'gradle --b ./dominio/build.gradle test'
             }
         }
         stage('Static Code Analysis') {
@@ -61,15 +73,6 @@ pipeline {
                 withSonarQubeEnv('Sonar') {
                     sh "${tool name: 'SonarScanner',type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"}
             }
-        }
-    
-        stage('Build') {
-            steps {
-                echo "------------>Build<------------"
-                sh 'gradle --b ./infraestructura/build.gradle build -x test'
-                sh 'gradle --b ./aplicacion/build.gradle build -x test'
-                sh 'gradle --b ./dominio/build.gradle build -x test'
-            } 
         }
     }
   

@@ -1,6 +1,7 @@
 package com.ceiba.fachada;
 
 import com.ceiba.modelo.Parqueo;
+import com.ceiba.modelo.Vehiculo;
 import com.ceiba.repositorio.ParqueoRepository;
 
 import org.springframework.stereotype.Repository;
@@ -66,6 +67,16 @@ public class ParqueoFachada implements ParqueoFachadaInterface {
 		} 
 		
 		return vehiculoSalio;
+	}
+
+	@Override
+	public boolean existe(Vehiculo vehiculo) {
+		boolean existe = true;
+		ParqueoEntity parqueoEntity = this.parqueoRepositorio.findByVehiculoPlaca(vehiculo.getPlaca());
+		if(parqueoEntity == null) {
+			existe = false;
+		}
+		return existe;
 	}
 
 }

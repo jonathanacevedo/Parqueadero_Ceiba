@@ -6,6 +6,10 @@ import com.ceiba.modelo.Moto;
 import com.ceiba.modelo.Vehiculo;
 
 public class BuilderVehiculo {
+	
+	private BuilderVehiculo() {
+		
+	}
 		
 	public static VehiculoEntity convertirAEntidad(Vehiculo vehiculo) {
 		VehiculoEntity vehiculoEntity = null;

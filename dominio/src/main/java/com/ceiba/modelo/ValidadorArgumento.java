@@ -5,7 +5,7 @@ import com.ceiba.excepcion.ExcepcionValorObligatorio;
 
 public class ValidadorArgumento {
 	
-	private ValidadorArgumento() {}
+	public ValidadorArgumento() {}
 
     public static void validarObligatorio(Object valor, String mensaje) {
         if (valor == null) {

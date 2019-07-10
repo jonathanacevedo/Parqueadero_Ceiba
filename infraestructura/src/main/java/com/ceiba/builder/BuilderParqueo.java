@@ -5,6 +5,10 @@ import com.ceiba.modelo.Parqueo;
 
 public class BuilderParqueo {
 	
+	private BuilderParqueo() {
+		
+	}
+	
 	public static Parqueo convertirAModelo(ParqueoEntity parqueoEntity) {
 		
 		Parqueo parqueo = null;

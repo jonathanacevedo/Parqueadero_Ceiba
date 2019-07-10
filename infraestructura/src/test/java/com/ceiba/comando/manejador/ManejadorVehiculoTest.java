@@ -11,6 +11,7 @@ import com.ceiba.fachadainterface.ParqueoFachadaInterface;
 import com.ceiba.fachadainterface.VehiculoFachadaInterface;
 import com.ceiba.modelo.Carro;
 import com.ceiba.modelo.Vehiculo;
+import com.ceiba.servicio.ServicioCrearParqueo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,12 +25,14 @@ public class ManejadorVehiculoTest {
 
 	private static final String PLACA_EJEMPLO = "TPL782";
 
+	
 	@Test
 	public void InsertarVehiculo() {
-		ManejadorParqueadero manejadorVehiculo = new ManejadorParqueadero(vehiculoRepositorio, parqueoRepositorio);
+		
+		ServicioCrearParqueo servicioCrearVehiculo = new ServicioCrearParqueo(vehiculoRepositorio, parqueoRepositorio);
 		Vehiculo vehiculo = new Carro(PLACA_EJEMPLO, "Carro");
 		
-		manejadorVehiculo.ingresarVehiculo(vehiculo);
+		servicioCrearVehiculo.ingresarVehiculo(vehiculo);
 		Vehiculo vehiculoReturn = this.vehiculoRepositorio.buscarVehiculo(vehiculo);
 
 		Assert.assertEquals(PLACA_EJEMPLO, vehiculoReturn.getPlaca());
