@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.ceiba.comando.testdatabuilder.VehiculoTestDataBuilder;
+import com.ceiba.comando.databuilder.VehiculoTestDataBuilder;
 import com.ceiba.fachadainterface.ParqueoFachadaInterface;
 import com.ceiba.fachadainterface.VehiculoFachadaInterface;
 import com.ceiba.modelo.Vehiculo;

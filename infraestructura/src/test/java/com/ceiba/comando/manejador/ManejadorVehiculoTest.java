@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.ceiba.comando.testdatabuilder.VehiculoTestDataBuilder;
+import com.ceiba.comando.databuilder.VehiculoTestDataBuilder;
 import com.ceiba.fachadainterface.ParqueoFachadaInterface;
 import com.ceiba.fachadainterface.VehiculoFachadaInterface;
 import com.ceiba.modelo.Vehiculo;
