@@ -23,6 +23,12 @@ pipeline {
     
     //AquÃ­ comienzan los â€œitemsâ€� del Pipeline
     stages{
+            stage('Clean') {
+            steps{ 
+                echo "------------>Checkout<------------"
+                sh 'rm -rf ./aplicacion'    
+            }  
+        }
         stage('Checkout') {
             steps{ 
                 echo "------------>Checkout<------------"
