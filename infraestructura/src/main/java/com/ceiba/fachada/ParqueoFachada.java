@@ -90,5 +90,4 @@ public class ParqueoFachada implements ParqueoFachadaInterface {
 		}
 		return contadorVehiculos;
 	}
-
 }

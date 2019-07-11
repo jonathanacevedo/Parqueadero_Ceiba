@@ -1,5 +1,7 @@
 package com.ceiba.fachadainterface;
 
+import java.util.List;
+
 import com.ceiba.modelo.Parqueo;
 import com.ceiba.modelo.Vehiculo;
 
@@ -18,4 +20,5 @@ public interface ParqueoFachadaInterface {
 	boolean existe(Vehiculo vehiculo);
 	
 	int contarVehiculosEnParqueadero(String tipoVehiculo);
+
 }

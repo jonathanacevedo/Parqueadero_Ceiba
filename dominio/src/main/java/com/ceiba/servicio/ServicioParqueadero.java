@@ -3,6 +3,7 @@ package com.ceiba.servicio;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.ceiba.excepcion.ExcepcionDuplicidad;
@@ -24,7 +25,7 @@ public class ServicioParqueadero {
 	private static final int PRECIO_HORA_CARRO = 1000;
 	private static final int PRECIO_DIA_MOTO = 4000;
 	private static final int PRECIO_DIA_CARRO = 8000;
-	private static final String NO_AUTORIZADO_A_INGRESAR = "No esta autorizado a ingresar";
+	public static final String NO_AUTORIZADO_A_INGRESAR = "No esta autorizado a ingresar";
 	private static final String NO_HAY_CUPO_PARA_EL_VEHICULO = "No hay cupo para el vehiculo que intenta ingresar";
 	private static final int MAXIMO_CUPO_CARROS = 20;
 	private static final int MAXIMO_CUPO_MOTOS = 10;
@@ -140,7 +141,7 @@ public class ServicioParqueadero {
 		long periodo = new Date().getTime() - fechaIngreso.getTime();
 		double horasDiferencia = (periodo / (60 * 60 * 1000));
 				
-		if(horasDiferencia == 0.0){
+		if(horasDiferencia == 0){
 			horasDiferencia = 1;
 		}
 		
@@ -178,5 +179,6 @@ public class ServicioParqueadero {
 		
 		return hayEspacio;
 	}
+
 		
 }

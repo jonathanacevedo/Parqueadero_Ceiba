@@ -27,7 +27,7 @@ public class BuilderVehiculo {
 		Vehiculo vehiculo = null;
 		
 		if(vehiculoEntity != null) {
-			if(vehiculoEntity.getTipo().equals("Carro")) {
+			if("Carro".equals(vehiculoEntity.getTipo())) {
 				vehiculo = new Carro(vehiculoEntity.getPlaca(), vehiculoEntity.getTipo());
 			} else {
 				vehiculo = new Moto(vehiculoEntity.getPlaca(), vehiculoEntity.getCilindraje(),vehiculoEntity.getTipo());
