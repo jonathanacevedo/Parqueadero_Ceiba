@@ -5,13 +5,13 @@ import org.springframework.context.annotation.Configuration;
 
 import com.ceiba.fachadainterface.ParqueoFachadaInterface;
 import com.ceiba.fachadainterface.VehiculoFachadaInterface;
-import com.ceiba.servicio.ServicioCrearParqueo;
+import com.ceiba.servicio.ServicioParqueadero;
 
 @Configuration
 public class ServicioBean {
 	
 	@Bean
-	public ServicioCrearParqueo crearServicio(ParqueoFachadaInterface parqueoFachadaInterface, VehiculoFachadaInterface vehiculoFachadaInterface) {
-		return new ServicioCrearParqueo(vehiculoFachadaInterface, parqueoFachadaInterface);
+	public ServicioParqueadero crearServicio(ParqueoFachadaInterface parqueoFachadaInterface, VehiculoFachadaInterface vehiculoFachadaInterface) {
+		return new ServicioParqueadero(vehiculoFachadaInterface, parqueoFachadaInterface);
 	}
 }

@@ -17,13 +17,15 @@ public class ParqueoEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "placa", referencedColumnName = "placa")
 	private VehiculoEntity vehiculo;
 	
 	private Date fechaIngreso;
 	private Date fechaSalida;
-	private double valor;
+	private double valor;	
+
 	public Long getId() {
 		return id;
 	}
@@ -53,6 +55,6 @@ public class ParqueoEntity {
 	}
 	public void setValor(double valor) {
 		this.valor = valor;
-	}	
+	}
 
 }

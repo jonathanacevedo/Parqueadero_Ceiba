@@ -1,14 +1,13 @@
 package com.ceiba.fachada;
 
-import com.ceiba.modelo.Parqueo;
-import com.ceiba.modelo.Vehiculo;
-import com.ceiba.repositorio.ParqueoRepository;
-
 import org.springframework.stereotype.Repository;
 
 import com.ceiba.builder.BuilderParqueo;
 import com.ceiba.entity.ParqueoEntity;
 import com.ceiba.fachadainterface.ParqueoFachadaInterface;
+import com.ceiba.modelo.Parqueo;
+import com.ceiba.modelo.Vehiculo;
+import com.ceiba.repositorio.ParqueoRepository;
 
 @Repository
 public class ParqueoFachada implements ParqueoFachadaInterface {
@@ -77,6 +76,19 @@ public class ParqueoFachada implements ParqueoFachadaInterface {
 			existe = false;
 		}
 		return existe;
+	}
+
+	@Override
+	public int contarVehiculosEnParqueadero(String tipoVehiculo) {
+		int contadorVehiculos = 0;
+		Iterable<ParqueoEntity> listaVehiculos = this.parqueoRepositorio.findByVehiculoTipo(tipoVehiculo);
+		
+		for (ParqueoEntity vehiculo : listaVehiculos) {
+			if(vehiculo.getFechaSalida() == null) {
+				contadorVehiculos++;
+			}
+		}
+		return contadorVehiculos;
 	}
 
 }

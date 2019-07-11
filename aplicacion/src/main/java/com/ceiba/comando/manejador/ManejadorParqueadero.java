@@ -4,16 +4,16 @@ import org.springframework.stereotype.Component;
 
 import com.ceiba.modelo.Parqueo;
 import com.ceiba.modelo.Vehiculo;
-import com.ceiba.servicio.ServicioCrearParqueo;
+import com.ceiba.servicio.ServicioParqueadero;
 
 @Component
 public class ManejadorParqueadero {
 	
 	
-	private ServicioCrearParqueo servicioCrearParqueo;
+	private ServicioParqueadero servicioCrearParqueo;
 
 	
-	public ManejadorParqueadero(ServicioCrearParqueo servicioCrearParqueo) {
+	public ManejadorParqueadero(ServicioParqueadero servicioCrearParqueo) {
 		this.servicioCrearParqueo = servicioCrearParqueo;
 	}
 

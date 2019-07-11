@@ -16,4 +16,6 @@ public interface ParqueoFachadaInterface {
 	public boolean consultarSalidaVehiculo(String placa);
 
 	boolean existe(Vehiculo vehiculo);
+	
+	int contarVehiculosEnParqueadero(String tipoVehiculo);
 }

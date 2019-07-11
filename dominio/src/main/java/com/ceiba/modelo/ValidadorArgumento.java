@@ -5,7 +5,9 @@ import com.ceiba.excepcion.ExcepcionValorObligatorio;
 
 public class ValidadorArgumento {
 	
-	public ValidadorArgumento() {}
+	public ValidadorArgumento() {
+		throw new IllegalStateException("Utility class");
+	}
 
     public static void validarObligatorio(Object valor, String mensaje) {
         if (valor == null) {
