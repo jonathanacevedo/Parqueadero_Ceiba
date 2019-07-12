@@ -13,17 +13,21 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.ceiba.excepcion.ExcepcionDuplicidad;
 import com.ceiba.excepcion.ExcepcionLongitudValor;
 import com.ceiba.excepcion.ExcepcionValorObligatorio;
+import com.ceiba.excepcion.ExcepcionVehiculoNoParqueado;
 
 @ControllerAdvice
 public class ManejadorError extends ResponseEntityExceptionHandler {
     
     private static final Logger LOGGER_ERROR = LoggerFactory.getLogger(ManejadorError.class);
 
-    private static final String OCURRIO_UN_ERROR_FAVOR_CONTACTAR_AL_ADMINISTRADOR = "Ocurrio un error favor contactar al administrador.";
+    public static final String OCURRIO_UN_ERROR_FAVOR_CONTACTAR_AL_ADMINISTRADOR = "Ocurrio un error favor contactar al administrador.";
 
-    private static final String RECURSO_NO_ENCONTRADO = "El recurso consultado no ha sido encontrado.";
+    public static final String RECURSO_NO_ENCONTRADO = "El recurso consultado no ha sido encontrado.";
     
-    private static final String NO_AUTORIZADO_A_INGRESAR = "No esta autorizado a ingresar";
+    public static final String NO_AUTORIZADO_A_INGRESAR = "No esta autorizado a ingresar";
+    
+	public static final String VEHICULO_NO_PARQUEADO = "El vehiculo no esta parqueado";
+
     
     private static final ConcurrentHashMap<String, Integer> CODIGOS_ESTADO = new ConcurrentHashMap<>();
 
@@ -73,8 +77,8 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
         return resultado;
     }
     
-    @ExceptionHandler(IllegalStateException.class)
-    public final ResponseEntity<Error> handleNotFoundException(IllegalStateException exception) {
+    @ExceptionHandler(ExcepcionVehiculoNoParqueado.class)
+    public final ResponseEntity<Error> handleVehiculoNoParqueado(ExcepcionVehiculoNoParqueado exception) {
         ResponseEntity<Error> resultado;
 
         String excepcionNombre = exception.getClass().getSimpleName();
@@ -86,8 +90,8 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
             resultado = new ResponseEntity<>(error, HttpStatus.valueOf(codigo));
         } else {
             LOGGER_ERROR.error(excepcionNombre, exception);
-            Error error = new Error(excepcionNombre, NO_AUTORIZADO_A_INGRESAR);
-            resultado = new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+            Error error = new Error(excepcionNombre, VEHICULO_NO_PARQUEADO);
+            resultado = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
         }
 
         return resultado;

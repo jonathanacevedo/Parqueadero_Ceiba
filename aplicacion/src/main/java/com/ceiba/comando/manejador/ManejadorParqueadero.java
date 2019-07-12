@@ -1,5 +1,7 @@
 package com.ceiba.comando.manejador;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.ceiba.modelo.Parqueo;
@@ -35,6 +37,10 @@ public class ManejadorParqueadero {
 
 	public Parqueo obtenerParqueo(String placaVehiculo) {
 		return this.servicioCrearParqueo.obtenerParqueo(placaVehiculo);
+	}
+	
+	public List<Parqueo> consultarVehiculosParqueados() {
+		return this.servicioCrearParqueo.consultarVehiculosParqueados();
 	}
 	
 }

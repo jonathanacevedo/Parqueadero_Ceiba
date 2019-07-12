@@ -13,12 +13,13 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.ceiba.controlador.ParqueaderoControlador;
 import com.ceiba.modelo.Moto;
 import com.ceiba.modelo.Vehiculo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ParqueaderoController.class)
+@WebMvcTest(ParqueaderoControlador.class)
 @ComponentScan("com.ceiba")
 public class ParqueoControllerTest {
 	

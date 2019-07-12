@@ -1,5 +1,6 @@
 package com.ceiba.servicio;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,17 +8,18 @@ import java.util.List;
 import java.util.Map;
 
 import com.ceiba.excepcion.ExcepcionDuplicidad;
-import com.ceiba.fachadainterface.ParqueoFachadaInterface;
-import com.ceiba.fachadainterface.VehiculoFachadaInterface;
+import com.ceiba.modelo.Carro;
 import com.ceiba.modelo.Moto;
 import com.ceiba.modelo.Parqueo;
 import com.ceiba.modelo.Vehiculo;
+import com.ceiba.repositorio.ParqueoRepositorio;
+import com.ceiba.repositorio.VehiculoRepositorio;
 
 public class ServicioParqueadero {
 	
-	private ParqueoFachadaInterface parqueoFachadaInterface;
+	private ParqueoRepositorio parqueoFachadaInterface;
 	
-	private VehiculoFachadaInterface vehiculoFachadaInterface;
+	private VehiculoRepositorio vehiculoFachadaInterface;
 	
 	private static final String EL_VEHICULO_YA_EXISTE_EN_EL_SISTEMA = "El vehiculo ya existe en el sistema";
 	private static final int PRECIO_INICIAL = 0;
@@ -33,7 +35,7 @@ public class ServicioParqueadero {
 	private static final String CONSTANTE_HORAS= "HORAS";
 	
 	
-	public ServicioParqueadero(VehiculoFachadaInterface vehiculoFachadaInterface, ParqueoFachadaInterface parqueoFachadaInterface) {
+	public ServicioParqueadero(VehiculoRepositorio vehiculoFachadaInterface, ParqueoRepositorio parqueoFachadaInterface) {
 		this.parqueoFachadaInterface = parqueoFachadaInterface;
 		this.vehiculoFachadaInterface = vehiculoFachadaInterface;
 	}
@@ -46,13 +48,25 @@ public class ServicioParqueadero {
 		return this.parqueoFachadaInterface.consultarSalidaVehiculo(placa);
 	}
 	
+	public List<Parqueo> consultarVehiculosParqueados(){
+		return this.parqueoFachadaInterface.consultarVehiculosParqueados();
+	}
 	
-	public void ingresarVehiculo(Vehiculo vehiculo) {
+	
+	public void ingresarVehiculo(Vehiculo vehiculoData) {
+		
+		Vehiculo vehiculo;
+		
+		if("moto".equalsIgnoreCase(vehiculoData.getTipo())) {
+			vehiculo = new Moto(vehiculoData.getPlaca(), vehiculoData.getCilindraje(), vehiculoData.getTipo());
+		} else {
+			vehiculo = new Carro(vehiculoData.getPlaca(), vehiculoData.getTipo());
+		}
 				
 		validarExistenciaPrevia(vehiculo);
 		
 		Date fechaActual = new Date();
-
+		
 		if (!puedeIngresar(vehiculo.getPlaca(), fechaActual)) {
 			throw new IllegalStateException(NO_AUTORIZADO_A_INGRESAR);
 		}
@@ -69,6 +83,7 @@ public class ServicioParqueadero {
 	
 
 	public void retirarParqueo(Parqueo parqueo) {
+		
 		double valorAPagar = 0;
 		
 		valorAPagar = calcularValorAPagar(parqueo.getVehiculo(), parqueo.getFechaInicio());
@@ -96,7 +111,7 @@ public class ServicioParqueadero {
 		
 		int numeroHoras = obtenerNumeroDeHoras(fechaIngreso);
 		double valorAPagar = 0;
-		
+				
 		Map<String, Integer> diasHoras = obtenerNumeroDiasHoras(numeroHoras);
 		int dias = diasHoras.get(CONSTANTE_DIAS);
 		int horas = diasHoras.get(CONSTANTE_HORAS);
@@ -166,9 +181,7 @@ public class ServicioParqueadero {
 		boolean hayEspacio = true;
 		
 		int numeroVehiculos = this.parqueoFachadaInterface.contarVehiculosEnParqueadero(tipoVehiculo);
-		
-		System.out.println("Numero de vehiculos: "+numeroVehiculos);
-		
+				
 		if("Carro".equals(tipoVehiculo) && numeroVehiculos >= MAXIMO_CUPO_CARROS) {
 			hayEspacio = false;
 		}

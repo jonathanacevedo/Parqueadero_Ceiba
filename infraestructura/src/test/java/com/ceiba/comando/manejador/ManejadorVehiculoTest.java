@@ -11,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.ceiba.fachadainterface.ParqueoFachadaInterface;
-import com.ceiba.fachadainterface.VehiculoFachadaInterface;
 import com.ceiba.modelo.Carro;
 import com.ceiba.modelo.Moto;
 import com.ceiba.modelo.Parqueo;
 import com.ceiba.modelo.Vehiculo;
+import com.ceiba.repositorio.ParqueoRepositorio;
+import com.ceiba.repositorio.VehiculoRepositorio;
 import com.ceiba.servicio.ServicioParqueadero;
 import com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
 
@@ -25,10 +25,10 @@ import com.ceiba.testdatabuilder.VehiculoTestDataBuilder;
 public class ManejadorVehiculoTest {
 
 	@Autowired
-	VehiculoFachadaInterface vehiculoRepositorio;
+	VehiculoRepositorio vehiculoRepositorio;
 	
 	@Autowired
-	ParqueoFachadaInterface parqueoRepositorio;
+	ParqueoRepositorio parqueoRepositorio;
 
 	private static final String PLACA_VEHICULO_CARRO_A_INSERTAR = "TPL782";
 	private static final String PLACA_VEHICULO_MOTO_A_INSERTAR = "KDA874";

@@ -12,9 +12,9 @@ import java.util.Map;
 import org.junit.Test;
 
 import com.ceiba.databuilder.VehiculoTestDataBuilder;
-import com.ceiba.fachadainterface.ParqueoFachadaInterface;
-import com.ceiba.fachadainterface.VehiculoFachadaInterface;
 import com.ceiba.modelo.Vehiculo;
+import com.ceiba.repositorio.ParqueoRepositorio;
+import com.ceiba.repositorio.VehiculoRepositorio;
 
 public class ServicioParqueaderoTest {
 
@@ -26,8 +26,8 @@ public class ServicioParqueaderoTest {
 	public void ingresarVehiculoConPlacaQueEmpiezaConA() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		
@@ -43,8 +43,8 @@ public class ServicioParqueaderoTest {
 	public void ingresarVehiculoConPlacaQueNoEmpiezaConA() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		
@@ -60,8 +60,8 @@ public class ServicioParqueaderoTest {
 	public void ingresarVehiculoQueEmpiezaConAUnDomingo() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		Calendar calendar = Calendar.getInstance();
@@ -79,8 +79,8 @@ public class ServicioParqueaderoTest {
 	public void ingresarVehiculoQueEmpiezaConAUnLunes() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		Calendar calendar = Calendar.getInstance();
@@ -98,8 +98,8 @@ public class ServicioParqueaderoTest {
 	public void ingresarVehiculoQueEmpiezaConAUnMiercoles() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		Calendar calendar = Calendar.getInstance();
@@ -117,8 +117,8 @@ public class ServicioParqueaderoTest {
 	public void ingresarVehiculoQueEmpiezaConAUnSabado() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		Calendar calendar = Calendar.getInstance();
@@ -136,8 +136,8 @@ public class ServicioParqueaderoTest {
 	public void ingresarVehiculoQueEmpiezaConBUnDomingo() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		Calendar calendar = Calendar.getInstance();
@@ -155,8 +155,8 @@ public class ServicioParqueaderoTest {
 	public void calcularDiferenciaDe2Horas() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		Calendar calendar = Calendar.getInstance();
@@ -174,8 +174,8 @@ public class ServicioParqueaderoTest {
 	public void calcularDiasYHorasEn27Horas() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		
@@ -194,8 +194,8 @@ public class ServicioParqueaderoTest {
 	public void calcularDiasYHorasEn100Horas() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		
@@ -214,8 +214,8 @@ public class ServicioParqueaderoTest {
 	public void calcularDiasYHorasEn7Horas() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		
@@ -234,8 +234,8 @@ public class ServicioParqueaderoTest {
 	public void calcularDiasYHorasEn9Horas() {
 		
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		
@@ -253,8 +253,8 @@ public class ServicioParqueaderoTest {
 	@Test
 	public void calcularValorAPagarDeCarroPorUnDiaYTresHoras() {
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		Vehiculo carro = new VehiculoTestDataBuilder()
@@ -275,8 +275,8 @@ public class ServicioParqueaderoTest {
 	@Test
 	public void calcularValorAPagarDeMoto650CCPorDiezHoras() {
 		//Arrange
-		VehiculoFachadaInterface vehiculoFachada = mock(VehiculoFachadaInterface.class);
-		ParqueoFachadaInterface parqueoFachada = mock(ParqueoFachadaInterface.class);
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
 		
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		Vehiculo moto = new VehiculoTestDataBuilder()
