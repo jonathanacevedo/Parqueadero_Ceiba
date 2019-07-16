@@ -1,8 +1,10 @@
 package com.ceiba.jpa.repositorio;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ceiba.jpa.builder.BuilderParqueo;
@@ -10,6 +12,7 @@ import com.ceiba.jpa.entity.ParqueoEntity;
 import com.ceiba.jpa.jpa.ParqueoJpa;
 import com.ceiba.modelo.Parqueo;
 import com.ceiba.modelo.RespuestaParqueo;
+import com.ceiba.modelo.RespuestaRetiroVehiculo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.repositorio.ParqueoRepositorio;
 
@@ -18,6 +21,7 @@ public class ParqueoRepositorioImp implements ParqueoRepositorio {
 	
 	private ParqueoJpa parqueoRepositorio;
 	
+	@Autowired
 	public ParqueoRepositorioImp(ParqueoJpa parqueoRepositorio) {
 		super();
 		this.parqueoRepositorio = parqueoRepositorio;
@@ -36,11 +40,18 @@ public class ParqueoRepositorioImp implements ParqueoRepositorio {
 	}
 
 	@Override
-	public void retirarParqueo(Parqueo parqueo) {
+	public RespuestaRetiroVehiculo retirarParqueo(Parqueo parqueo) {
 		ParqueoEntity parqueoEntity = this.parqueoRepositorio.findByVehiculoPlaca(parqueo.getVehiculo().getPlaca());
 		parqueoEntity.setFechaSalida(parqueo.getFechaFin());
 		parqueoEntity.setValor(parqueo.getValor());
 		this.parqueoRepositorio.save(parqueoEntity);
+		
+		String fechaIngreso = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(parqueo.getFechaInicio());;
+		String fechaSalida = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(parqueo.getFechaFin());;
+		
+		RespuestaRetiroVehiculo respuestaRetiroVehiculo = new RespuestaRetiroVehiculo(fechaIngreso, fechaSalida, parqueo.getValor());
+		
+		return respuestaRetiroVehiculo;
 	}
 
 	@Override
@@ -96,13 +107,20 @@ public class ParqueoRepositorioImp implements ParqueoRepositorio {
 	}
 	
 	@Override
-	public List<Parqueo> consultarVehiculosParqueados() {
+	public List<RespuestaParqueo> consultarVehiculosParqueados() {
 		
-		List<Parqueo> listaParqueo = new ArrayList<>();
-		Iterable<ParqueoEntity> listaParqueosEntities = this.parqueoRepositorio.findAll();
+		List<RespuestaParqueo> listaParqueo = new ArrayList<>();
+		Iterable<ParqueoEntity> listaParqueosEntities = this.parqueoRepositorio.consultarParqueados();
+		
+		Parqueo parqueo;
+		RespuestaParqueo parqueoRespuesta;
+		String fechaRespuesta;
 	
 		for (ParqueoEntity parqueoEntity : listaParqueosEntities) {
-			listaParqueo.add(BuilderParqueo.convertirAModelo(parqueoEntity));
+			parqueo = BuilderParqueo.convertirAModelo(parqueoEntity);
+			fechaRespuesta = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(parqueo.getFechaInicio());
+			parqueoRespuesta = new RespuestaParqueo(parqueo.getVehiculo().getPlaca(), parqueo.getVehiculo().getTipo(),fechaRespuesta);
+			listaParqueo.add(parqueoRespuesta);
 		}
 				
 		return listaParqueo;

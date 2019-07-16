@@ -1,6 +1,5 @@
 package com.ceiba.servicio;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -11,6 +10,8 @@ import com.ceiba.excepcion.ExcepcionDuplicidad;
 import com.ceiba.modelo.Carro;
 import com.ceiba.modelo.Moto;
 import com.ceiba.modelo.Parqueo;
+import com.ceiba.modelo.RespuestaParqueo;
+import com.ceiba.modelo.RespuestaRetiroVehiculo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.repositorio.ParqueoRepositorio;
 import com.ceiba.repositorio.VehiculoRepositorio;
@@ -48,7 +49,7 @@ public class ServicioParqueadero {
 		return this.parqueoFachadaInterface.consultarSalidaVehiculo(placa);
 	}
 	
-	public List<Parqueo> consultarVehiculosParqueados(){
+	public List<RespuestaParqueo> consultarVehiculosParqueados(){
 		return this.parqueoFachadaInterface.consultarVehiculosParqueados();
 	}
 	
@@ -82,14 +83,14 @@ public class ServicioParqueadero {
 	}
 	
 
-	public void retirarParqueo(Parqueo parqueo) {
+	public RespuestaRetiroVehiculo retirarParqueo(Parqueo parqueo) {
 		
 		double valorAPagar = 0;
 		
 		valorAPagar = calcularValorAPagar(parqueo.getVehiculo(), parqueo.getFechaInicio());
 		parqueo.setValor(valorAPagar);
 		parqueo.setFechaFin(new Date());
-		this.parqueoFachadaInterface.retirarParqueo(parqueo);
+		return this.parqueoFachadaInterface.retirarParqueo(parqueo);
 	}
 		
 	public boolean puedeIngresar(String placaVehiculo, Date fechaPosibleIngreso) {

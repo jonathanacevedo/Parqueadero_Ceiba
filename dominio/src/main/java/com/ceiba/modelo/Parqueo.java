@@ -8,6 +8,7 @@ public class Parqueo {
 	private Date fechaInicio;
 	private Date fechaFin;
 	private double valor;
+	public Parqueo() {}
 	public Parqueo(Vehiculo vehiculo, Date fechaInicio, Date fechaFin, double valor) {
 		super();
 		this.vehiculo = vehiculo;

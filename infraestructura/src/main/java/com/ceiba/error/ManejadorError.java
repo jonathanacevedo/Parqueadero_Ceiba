@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.ceiba.excepcion.ExcepcionDuplicidad;
-import com.ceiba.excepcion.ExcepcionLongitudValor;
-import com.ceiba.excepcion.ExcepcionValorObligatorio;
 import com.ceiba.excepcion.ExcepcionVehiculoNoParqueado;
 
 @ControllerAdvice
@@ -32,8 +30,6 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
     private static final ConcurrentHashMap<String, Integer> CODIGOS_ESTADO = new ConcurrentHashMap<>();
 
     public ManejadorError() {
-        CODIGOS_ESTADO.put(ExcepcionLongitudValor.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
-        CODIGOS_ESTADO.put(ExcepcionValorObligatorio.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionDuplicidad.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
     }
 

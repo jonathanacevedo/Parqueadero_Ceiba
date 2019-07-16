@@ -14,4 +14,5 @@ public class ServicioBean {
 	public ServicioParqueadero crearServicio(ParqueoRepositorio parqueoFachadaInterface, VehiculoRepositorio vehiculoFachadaInterface) {
 		return new ServicioParqueadero(vehiculoFachadaInterface, parqueoFachadaInterface);
 	}
-}
+	
+}	

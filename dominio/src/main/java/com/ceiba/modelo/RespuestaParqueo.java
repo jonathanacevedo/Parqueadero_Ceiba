@@ -30,4 +30,6 @@ public class RespuestaParqueo {
 		this.fechaIngreso = fechaIngreso;
 	}
 	
+	
+	
 }

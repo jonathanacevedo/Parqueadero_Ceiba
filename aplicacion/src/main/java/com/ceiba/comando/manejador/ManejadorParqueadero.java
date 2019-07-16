@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.modelo.Parqueo;
+import com.ceiba.modelo.RespuestaParqueo;
+import com.ceiba.modelo.RespuestaRetiroVehiculo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.servicio.ServicioParqueadero;
 
@@ -23,8 +25,8 @@ public class ManejadorParqueadero {
 		this.servicioCrearParqueo.ingresarVehiculo(vehiculo);
 	}
 	
-	public void retirarParqueo(Parqueo parqueo) {
-		this.servicioCrearParqueo.retirarParqueo(parqueo);
+	public RespuestaRetiroVehiculo retirarParqueo(Parqueo parqueo) {		
+		return this.servicioCrearParqueo.retirarParqueo(parqueo);
 	}
 	
 	public boolean consultarVehiculo(String placa) {
@@ -39,7 +41,7 @@ public class ManejadorParqueadero {
 		return this.servicioCrearParqueo.obtenerParqueo(placaVehiculo);
 	}
 	
-	public List<Parqueo> consultarVehiculosParqueados() {
+	public List<RespuestaParqueo> consultarVehiculosParqueados() {
 		return this.servicioCrearParqueo.consultarVehiculosParqueados();
 	}
 	

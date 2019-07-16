@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
@@ -12,6 +13,8 @@ import java.util.Map;
 import org.junit.Test;
 
 import com.ceiba.databuilder.VehiculoTestDataBuilder;
+import com.ceiba.modelo.Parqueo;
+import com.ceiba.modelo.RespuestaParqueo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.repositorio.ParqueoRepositorio;
 import com.ceiba.repositorio.VehiculoRepositorio;
@@ -19,8 +22,10 @@ import com.ceiba.repositorio.VehiculoRepositorio;
 public class ServicioParqueaderoTest {
 
 	private static final String PLACA_QUE_EMPIEZA_CON_A = "AGT412";
+	private static final String PLACA_VEHICULO = "KYQ125";
 	private static final String HORAS = "HORAS";
 	private static final String DIAS = "DIAS";
+	private static final int CILINDRAJE_650 = 650;
 
 	@Test
 	public void ingresarVehiculoConPlacaQueEmpiezaConA() {
@@ -281,9 +286,9 @@ public class ServicioParqueaderoTest {
 		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
 		Vehiculo moto = new VehiculoTestDataBuilder()
 						.conPlaca("KTR93F")
-						.conCilindraje(650)
+						.conCilindraje(CILINDRAJE_650)
 						.buildMoto();
-				
+						
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());
 		calendar.add(Calendar.HOUR_OF_DAY,  -10);
@@ -293,6 +298,35 @@ public class ServicioParqueaderoTest {
 		
 		//Assert
 		assertEquals(6000, valorAPagar, 0);
+	}
+	
+	@Test
+	public void retornarRespuestaDeRetiro() {
+		//Arrange
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
+		
+		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
+		
+		Parqueo parqueo = new Parqueo();
+		
+		Vehiculo carro = new VehiculoTestDataBuilder()
+				.conPlaca(PLACA_VEHICULO)
+				.buildCarro();
+		
+		parqueo.setFechaInicio(new Date());
+		parqueo.setFechaFin(new Date());
+		parqueo.setVehiculo(carro);
+		parqueo.setValor(manejadorParqueadero.calcularValorAPagar(carro, new Date()));
+		
+		RespuestaParqueo respuestaParqueo = new RespuestaParqueo(parqueo.getVehiculo().getPlaca(), parqueo.getVehiculo().getTipo(),DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(parqueo.getFechaInicio()));
+		
+		//Act
+		String placaRetorno = respuestaParqueo.getPlaca();
+		
+		
+		//Assert
+		assertEquals(PLACA_VEHICULO, placaRetorno);
 	}
 	
 }
