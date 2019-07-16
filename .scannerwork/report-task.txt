@@ -2,5 +2,5 @@ projectKey=co.com.ceiba.estacionamiento.jonathan.payares
 serverUrl=https://sonar.ceiba.com.co
 serverVersion=7.7.0.23042
 dashboardUrl=https://sonar.ceiba.com.co/dashboard?id=co.com.ceiba.estacionamiento.jonathan.payares
-ceTaskId=AWv7XRBP8UAVUvGQcfUd
-ceTaskUrl=https://sonar.ceiba.com.co/api/ce/task?id=AWv7XRBP8UAVUvGQcfUd
+ceTaskId=AWv7uyVS8UAVUvGQcfUv
+ceTaskUrl=https://sonar.ceiba.com.co/api/ce/task?id=AWv7uyVS8UAVUvGQcfUv
