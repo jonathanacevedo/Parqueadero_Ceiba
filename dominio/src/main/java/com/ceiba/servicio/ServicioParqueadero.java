@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ceiba.excepcion.ExcepcionDuplicidad;
+import com.ceiba.excepcion.ExcepcionSinCupo;
 import com.ceiba.modelo.Carro;
 import com.ceiba.modelo.Moto;
 import com.ceiba.modelo.Parqueo;
@@ -73,7 +74,7 @@ public class ServicioParqueadero {
 		}
 		
 		if(!hayEspacio(vehiculo.getTipo())) {
-			throw new IllegalStateException(NO_HAY_CUPO_PARA_EL_VEHICULO);
+			throw new ExcepcionSinCupo(NO_HAY_CUPO_PARA_EL_VEHICULO);
 		}
 
 		this.vehiculoFachadaInterface.ingresarVehiculo(vehiculo);
@@ -167,8 +168,7 @@ public class ServicioParqueadero {
 	public Parqueo obtenerParqueo(String placa) {
 		return this.parqueoFachadaInterface.obtenerParqueo(placa);
 	}
-	
-	
+		
 	public void validarExistenciaPrevia(Vehiculo vehiculo) {
 				
 		Parqueo parqueo = this.parqueoFachadaInterface.obtenerParqueo(vehiculo.getPlaca());

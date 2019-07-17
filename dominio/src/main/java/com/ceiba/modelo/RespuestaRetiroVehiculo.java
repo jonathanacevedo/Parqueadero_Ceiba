@@ -6,7 +6,6 @@ public class RespuestaRetiroVehiculo {
 	private String fechaSalida;
 	private double valorAPagar;
 	public RespuestaRetiroVehiculo(String fechaIngreso, String fechaSalida, double valorAPagar) {
-		super();
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
 		this.valorAPagar = valorAPagar;

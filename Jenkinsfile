@@ -67,6 +67,11 @@ pipeline {
                 sh 'gradle --b ./dominio/build.gradle test'
             }
         }
+        stage('Functional Tests') {
+            steps {
+                echo "------------>Functional Tests<------------"
+            }
+        }
         stage('Static Code Analysis') {
             steps{
                 echo '------------>AnÃ¡lisis de cÃ³digo estÃ¡tico<------------'

@@ -46,8 +46,8 @@ public class ParqueoRepositorioImp implements ParqueoRepositorio {
 		parqueoEntity.setValor(parqueo.getValor());
 		this.parqueoRepositorio.save(parqueoEntity);
 		
-		String fechaIngreso = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(parqueo.getFechaInicio());;
-		String fechaSalida = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(parqueo.getFechaFin());;
+		String fechaIngreso = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(parqueo.getFechaInicio());
+		String fechaSalida = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(parqueo.getFechaFin());
 		
 		RespuestaRetiroVehiculo respuestaRetiroVehiculo = new RespuestaRetiroVehiculo(fechaIngreso, fechaSalida, parqueo.getValor());
 		

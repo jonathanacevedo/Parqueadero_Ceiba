@@ -23,12 +23,14 @@ public class ServicioParqueaderoTest {
 
 	private static final String PLACA_QUE_EMPIEZA_CON_A = "AGT412";
 	private static final String PLACA_VEHICULO = "KYQ125";
+	private static final String PLACA_VEHICULO_A_CONSULTAR_EXISTENCIA = "IUQ154";
+	private static final String PLACA_VEHICULO_A_RETIRAR = "OUQ354";
 	private static final String HORAS = "HORAS";
 	private static final String DIAS = "DIAS";
 	private static final int CILINDRAJE_650 = 650;
 
 	@Test
-	public void ingresarVehiculoConPlacaQueEmpiezaConA() {
+	public void ingresarVehiculoConPlacaQueEmpiezaConATest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -45,7 +47,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void ingresarVehiculoConPlacaQueNoEmpiezaConA() {
+	public void ingresarVehiculoConPlacaQueNoEmpiezaConATest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -62,7 +64,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void ingresarVehiculoQueEmpiezaConAUnDomingo() {
+	public void ingresarVehiculoQueEmpiezaConAUnDomingoTest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -81,7 +83,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void ingresarVehiculoQueEmpiezaConAUnLunes() {
+	public void ingresarVehiculoQueEmpiezaConAUnLunesTest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -100,7 +102,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void ingresarVehiculoQueEmpiezaConAUnMiercoles() {
+	public void ingresarVehiculoQueEmpiezaConAUnMiercolesTest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -119,7 +121,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void ingresarVehiculoQueEmpiezaConAUnSabado() {
+	public void ingresarVehiculoQueEmpiezaConAUnSabadoTest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -138,7 +140,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void ingresarVehiculoQueEmpiezaConBUnDomingo() {
+	public void ingresarVehiculoQueEmpiezaConBUnDomingoTest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -157,7 +159,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void calcularDiferenciaDe2Horas() {
+	public void calcularDiferenciaDe2HorasTest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -176,7 +178,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void calcularDiasYHorasEn27Horas() {
+	public void calcularDiasYHorasEn27HorasTest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -196,7 +198,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void calcularDiasYHorasEn100Horas() {
+	public void calcularDiasYHorasEn100HorasTest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -216,7 +218,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void calcularDiasYHorasEn7Horas() {
+	public void calcularDiasYHorasEn7HorasTest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -236,7 +238,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void calcularDiasYHorasEn9Horas() {
+	public void calcularDiasYHorasEn9HorasTest() {
 		
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
@@ -256,7 +258,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void calcularValorAPagarDeCarroPorUnDiaYTresHoras() {
+	public void calcularValorAPagarDeCarroPorUnDiaYTresHorasTest() {
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
 		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
@@ -278,7 +280,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void calcularValorAPagarDeMoto650CCPorDiezHoras() {
+	public void calcularValorAPagarDeMoto650CCPorDiezHorasTest() {
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
 		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
@@ -301,7 +303,7 @@ public class ServicioParqueaderoTest {
 	}
 	
 	@Test
-	public void retornarRespuestaDeRetiro() {
+	public void retornarRespuestaDeRetiroTest() {
 		//Arrange
 		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
 		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
@@ -327,6 +329,83 @@ public class ServicioParqueaderoTest {
 		
 		//Assert
 		assertEquals(PLACA_VEHICULO, placaRetorno);
+	}
+	
+	@Test
+	public void consultarExistenciaVehiculoTest() {
+		
+		//Arrange
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
+		
+		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
+		
+		Vehiculo moto = new VehiculoTestDataBuilder()
+				.conPlaca(PLACA_VEHICULO_A_CONSULTAR_EXISTENCIA)
+				.conCilindraje(150)
+				.buildMoto();
+		
+		manejadorParqueadero.ingresarVehiculo(moto);
+		
+		//Act
+		boolean ingresoValido = manejadorParqueadero.consultarVehiculo(PLACA_VEHICULO_A_CONSULTAR_EXISTENCIA); 
+		
+		//Assert
+		assertFalse(ingresoValido);
+	}
+		
+	@Test
+	public void consultarSalidaDeVehiculoTest() {
+		
+		//Arrange
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
+		
+		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
+		
+		Vehiculo carro = new VehiculoTestDataBuilder()
+				.conPlaca(PLACA_VEHICULO_A_RETIRAR)
+				.buildCarro();
+		
+		manejadorParqueadero.ingresarVehiculo(carro);
+		
+		Parqueo parqueo = new Parqueo(carro, new Date(), null, 0);
+		manejadorParqueadero.retirarParqueo(parqueo);
+		
+		//Act
+		boolean ingresoValido = manejadorParqueadero.consultarSalidaVehiculo(PLACA_VEHICULO_A_RETIRAR); 
+		
+		//Assert
+		assertFalse(ingresoValido);
+	}
+	@Test
+	public void ingresarVehiculoQueYaExisteTest() {
+		
+		//Arrange
+		VehiculoRepositorio vehiculoFachada = mock(VehiculoRepositorio.class);
+		ParqueoRepositorio parqueoFachada = mock(ParqueoRepositorio.class);
+		
+		ServicioParqueadero manejadorParqueadero = new ServicioParqueadero(vehiculoFachada, parqueoFachada);
+		
+		Vehiculo carro = new VehiculoTestDataBuilder()
+				.conPlaca(PLACA_VEHICULO_A_RETIRAR)
+				.buildCarro();
+		
+		manejadorParqueadero.ingresarVehiculo(carro);
+		
+		Vehiculo carro2 = new VehiculoTestDataBuilder()
+				.conPlaca(PLACA_VEHICULO_A_RETIRAR)
+				.buildCarro();
+		
+		manejadorParqueadero.ingresarVehiculo(carro);
+		manejadorParqueadero.ingresarVehiculo(carro2);
+		
+		//Act
+		boolean ingresoValido = manejadorParqueadero.consultarSalidaVehiculo(PLACA_VEHICULO_A_RETIRAR); 
+		
+		//Assert
+		assertFalse(ingresoValido);
+		
 	}
 	
 }
