@@ -3,6 +3,7 @@ package com.ceiba.servicio;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 
 import java.text.DateFormat;
@@ -13,6 +14,7 @@ import java.util.Map;
 import org.junit.Test;
 
 import com.ceiba.databuilder.VehiculoTestDataBuilder;
+import com.ceiba.excepcion.ExcepcionVehiculoNoParqueado;
 import com.ceiba.modelo.Parqueo;
 import com.ceiba.modelo.RespuestaParqueo;
 import com.ceiba.modelo.Vehiculo;
@@ -354,6 +356,7 @@ public class ServicioParqueaderoTest {
 		assertFalse(ingresoValido);
 	}
 		
+	
 	@Test
 	public void consultarSalidaDeVehiculoTest() {
 		
@@ -370,14 +373,20 @@ public class ServicioParqueaderoTest {
 		manejadorParqueadero.ingresarVehiculo(carro);
 		
 		Parqueo parqueo = new Parqueo(carro, new Date(), null, 0);
-		manejadorParqueadero.retirarParqueo(parqueo);
 		
-		//Act
-		boolean ingresoValido = manejadorParqueadero.consultarSalidaVehiculo(PLACA_VEHICULO_A_RETIRAR); 
-		
-		//Assert
-		assertFalse(ingresoValido);
+		try {
+			//Act
+			manejadorParqueadero.retirarParqueo(parqueo);
+			fail();
+
+		} catch (ExcepcionVehiculoNoParqueado e) {
+			//Assert
+			assertEquals(ServicioParqueadero.VEHICULO_NO_PARQUEADO, e.getMessage());
+		}
+
 	}
+
+	
 	@Test
 	public void ingresarVehiculoQueYaExisteTest() {
 		

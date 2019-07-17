@@ -10,6 +10,14 @@ repositories {
 	mavenCentral()
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
 dependencies {
 
 	testImplementation 'junit:junit:4.12'

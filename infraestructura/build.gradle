@@ -20,6 +20,14 @@ ext {
 	set('springCloudVersion', 'Greenwich.RELEASE')
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
 dependencies {
 	
 	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'

@@ -154,11 +154,6 @@ public class ParqueoControllerTest {
                 .content(objectMapper.writeValueAsString(vehiculo)))
         		.andExpect(status().isInsufficientStorage());
     	
-       /* mocMvc.perform(put(URL_API+"/"+PLACA__DE_VEHICULO_INEXISTENTE)
-                .contentType(MediaType.APPLICATION_JSON))
-        		.andExpect(status().isNotFound());
-        		*/
-        
     }
 
 }

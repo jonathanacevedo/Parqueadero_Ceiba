@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ceiba.comando.manejador.ManejadorParqueadero;
-import com.ceiba.error.ManejadorError;
-import com.ceiba.excepcion.ExcepcionVehiculoNoParqueado;
 import com.ceiba.modelo.Parqueo;
 import com.ceiba.modelo.RespuestaParqueo;
 import com.ceiba.modelo.RespuestaRetiroVehiculo;
@@ -34,7 +32,6 @@ public class ParqueaderoControlador {
 	
 	@PostMapping("/vehiculos")
 	public void ingresarVehiculo(@RequestBody Vehiculo vehiculo) {
-				
 		if(vehiculo.getPlaca() == null || vehiculo.getTipo() == null) {
 			throw new IllegalArgumentException(VALORES_INCORRECTOS);
 		}
@@ -48,22 +45,9 @@ public class ParqueaderoControlador {
 	
 	@PutMapping("/vehiculos/{placaVehiculo}")
 	public RespuestaRetiroVehiculo sacarVehiculo(@PathVariable String placaVehiculo) {
-		
-		
-		if(!this.manejadorParqueadero.consultarVehiculo(placaVehiculo)) {
-			throw new ExcepcionVehiculoNoParqueado(ManejadorError.VEHICULO_NO_PARQUEADO);
-		}
-		
-		if(this.manejadorParqueadero.consultarSalidaVehiculo(placaVehiculo)) {
-			throw new ExcepcionVehiculoNoParqueado(ManejadorError.VEHICULO_NO_PARQUEADO);
-		}
-		
 		Parqueo parqueo;
-		
 		parqueo = this.manejadorParqueadero.obtenerParqueo(placaVehiculo);						
-		
 		return this.manejadorParqueadero.retirarParqueo(parqueo);
-		
 	}
 	
 }

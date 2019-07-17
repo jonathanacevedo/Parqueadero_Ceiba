@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.ceiba.excepcion.ExcepcionDuplicidad;
 import com.ceiba.excepcion.ExcepcionSinCupo;
+import com.ceiba.excepcion.ExcepcionVehiculoNoParqueado;
 import com.ceiba.modelo.Carro;
 import com.ceiba.modelo.Moto;
 import com.ceiba.modelo.Parqueo;
@@ -23,14 +24,15 @@ public class ServicioParqueadero {
 	
 	private VehiculoRepositorio vehiculoFachadaInterface;
 	
-	private static final String EL_VEHICULO_YA_EXISTE_EN_EL_SISTEMA = "El vehiculo ya existe en el sistema";
+	public static final String EL_VEHICULO_YA_EXISTE_EN_EL_SISTEMA = "El vehiculo ya existe en el sistema";
+	public static final String VEHICULO_NO_PARQUEADO = "El vehiculo no esta parqueado";
 	private static final int PRECIO_INICIAL = 0;
 	private static final int PRECIO_HORA_MOTO = 500;
 	private static final int PRECIO_HORA_CARRO = 1000;
 	private static final int PRECIO_DIA_MOTO = 4000;
 	private static final int PRECIO_DIA_CARRO = 8000;
 	public static final String NO_AUTORIZADO_A_INGRESAR = "No esta autorizado a ingresar";
-	private static final String NO_HAY_CUPO_PARA_EL_VEHICULO = "No hay cupo para el vehiculo que intenta ingresar";
+	public static final String NO_HAY_CUPO_PARA_EL_VEHICULO = "No hay cupo para el vehiculo que intenta ingresar";
 	private static final int MAXIMO_CUPO_CARROS = 20;
 	private static final int MAXIMO_CUPO_MOTOS = 10;
 	private static final String CONSTANTE_DIAS = "DIAS";
@@ -86,6 +88,20 @@ public class ServicioParqueadero {
 
 	public RespuestaRetiroVehiculo retirarParqueo(Parqueo parqueo) {
 		
+		if(parqueo == null) {
+			throw new ExcepcionVehiculoNoParqueado(VEHICULO_NO_PARQUEADO);
+		}
+		
+		String placaVehiculo = parqueo.getVehiculo().getPlaca();
+		
+		if(!this.parqueoFachadaInterface.consultarVehiculo(placaVehiculo)) {
+			throw new ExcepcionVehiculoNoParqueado(VEHICULO_NO_PARQUEADO);
+		}
+		
+		if(this.parqueoFachadaInterface.consultarSalidaVehiculo(placaVehiculo)) {
+			throw new ExcepcionVehiculoNoParqueado(VEHICULO_NO_PARQUEADO);
+		}
+				
 		double valorAPagar = 0;
 		
 		valorAPagar = calcularValorAPagar(parqueo.getVehiculo(), parqueo.getFechaInicio());

@@ -17,7 +17,7 @@ import com.ceiba.excepcion.ExcepcionVehiculoNoParqueado;
 @ControllerAdvice
 public class ManejadorError extends ResponseEntityExceptionHandler {
     
-    private static final Logger LOGGER_ERROR = LoggerFactory.getLogger(ManejadorError.class);
+    public static final Logger LOGGER_ERROR = LoggerFactory.getLogger(ManejadorError.class);
 
     public static final String OCURRIO_UN_ERROR_FAVOR_CONTACTAR_AL_ADMINISTRADOR = "Ocurrio un error favor contactar al administrador.";
 
