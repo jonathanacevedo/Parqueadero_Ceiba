@@ -1,5 +1,6 @@
 package com.ceiba.modelo;
 
+
 public class RespuestaParqueo {
 	
 	private String placa;

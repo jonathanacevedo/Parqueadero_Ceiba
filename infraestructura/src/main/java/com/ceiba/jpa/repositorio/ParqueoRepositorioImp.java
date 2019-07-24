@@ -48,10 +48,8 @@ public class ParqueoRepositorioImp implements ParqueoRepositorio {
 		
 		String fechaIngreso = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(parqueo.getFechaInicio());
 		String fechaSalida = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(parqueo.getFechaFin());
-		
-		RespuestaRetiroVehiculo respuestaRetiroVehiculo = new RespuestaRetiroVehiculo(fechaIngreso, fechaSalida, parqueo.getValor());
-		
-		return respuestaRetiroVehiculo;
+				
+		return new RespuestaRetiroVehiculo(fechaIngreso, fechaSalida, parqueo.getValor());
 	}
 
 	@Override

@@ -77,19 +77,7 @@ public class ParqueoControllerTest {
     @Test
     public void retirarVehiculoTest() throws Exception {
         //Arrange
-    	/*
-        Vehiculo vehiculo = new VehiculoTestDataBuilder()
-        		.conPlaca(PLACA_A_RETIRAR)
-        		.conCilindraje(CILINDRAJE_A_INGRESAR)
-        		.buildMoto();
-        
-      //Act - Assert        
-        mocMvc.perform(post(URL_API)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(vehiculo)))
-        		.andExpect(status().isOk());
-       */
-        
+    	
         mocMvc.perform(put(URL_API+"/"+PLACA_A_INGRESAR)
                 .contentType(MediaType.APPLICATION_JSON))
         		.andExpect(status().isOk())
